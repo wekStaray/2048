@@ -10,8 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface slider : UIView
-
+@interface slider : UILabel
+-(instancetype)initWithPosition:(CGPoint)pos andSize:(CGFloat)w;
+-(instancetype)initWithPosition:(CGPoint)pos andSize:(CGFloat)w andNum:(int)number;
+@property(nonatomic,readonly)int num;
 @end
 
 NS_ASSUME_NONNULL_END
