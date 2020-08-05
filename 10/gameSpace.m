@@ -153,11 +153,13 @@
                     [self layoutIfNeeded];
                 }];
                 
-                [UIView animateWithDuration:0.2 animations:^{
-                    [first removeFromSuperview];
-                    [second removeFromSuperview];
-                    
-                    [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
+                [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:NO block:^(NSTimer * _Nonnull timer) {
+                    [UIView animateWithDuration:0.1 animations:^{
+                        [first removeFromSuperview];
+                        [second removeFromSuperview];
+                        
+                        [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
+                    }];
                 }];
                 
                 _score += first.num;
@@ -242,6 +244,7 @@
                 second = [self.dir objectForKey:[NSString stringWithFormat:@"%d",temp]];
                 [self.dir removeObjectForKey:[NSString stringWithFormat:@"%d",temp]];
             }
+            
             if(first != nil && second != nil)
             if(first.num == second.num){
                 
@@ -259,15 +262,17 @@
                     [self layoutIfNeeded];
                 }];
                 
-                [UIView animateWithDuration:0.1 animations:^{
-                    [first removeFromSuperview];
-                    [second removeFromSuperview];
-                    
-                    [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
+                [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:NO block:^(NSTimer * _Nonnull timer) {
+                    [UIView animateWithDuration:0.1 animations:^{
+                        [first removeFromSuperview];
+                        [second removeFromSuperview];
+                        
+                        [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
+                    }];
                 }];
                 
                 _score += first.num;
-                
+                _isSuccessSlide = YES;
                 first = second = nil;
                 now--;
             }
@@ -363,11 +368,13 @@
                     [self layoutIfNeeded];
                 }];
                 
-                [UIView animateWithDuration:0.1 animations:^{
-                    [first removeFromSuperview];
-                    [second removeFromSuperview];
-                    
-                    [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
+                [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:NO block:^(NSTimer * _Nonnull timer) {
+                    [UIView animateWithDuration:0.1 animations:^{
+                        [first removeFromSuperview];
+                        [second removeFromSuperview];
+                        
+                        [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
+                    }];
                 }];
                 _score += first.num;
                 
@@ -467,11 +474,13 @@
                     [self layoutIfNeeded];
                 }];
                 
-                [UIView animateWithDuration:0.1 animations:^{
-                    [first removeFromSuperview];
-                    [second removeFromSuperview];
-                    
-                    [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
+                [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:NO block:^(NSTimer * _Nonnull timer) {
+                    [UIView animateWithDuration:0.1 animations:^{
+                        [first removeFromSuperview];
+                        [second removeFromSuperview];
+                        
+                        [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
+                    }];
                 }];
                 _score += first.num;
                 _isSuccessSlide = YES;
