@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface gameSpace : UIView
 -(void)layout:(int)num;
 -(void)startGame;
+-(BOOL)GameOver;
 @property(nonatomic,assign) int score;
 @end
 

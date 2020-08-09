@@ -33,6 +33,7 @@
     self.blockWidth = (self.frame.size.width-(self.lineBlockNum+1)*5)/self.lineBlockNum;
     
     self.backgroundColor = [[UIColor blackColor]colorWithAlphaComponent:0.2];
+//  self.layer.backgroundColor = [[UIColor blackColor]CGColor];
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = 3;
     
@@ -113,7 +114,33 @@
     [self.dir setObject:numBlock forKey: [NSString stringWithFormat:@"%d",temp]];
     
 }
-
+-(void)removeAndCreate:(slider*)first andSecond:(slider*)second andPos:(int)temp{
+    
+    [first mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
+    }];
+    
+    [second mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
+    }];
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [self layoutIfNeeded];
+    }];
+    
+                    
+    [UIView animateWithDuration:0.1
+                          delay:0.1
+                        options:UIViewAnimationOptionLayoutSubviews
+                     animations:^{
+                                [first removeFromSuperview];
+                                [second removeFromSuperview];
+                                [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
+                            }
+                     completion:^(BOOL finished) {
+    }];
+                    
+}
 -(void)slideUp{
     
     int temp,now;
@@ -141,26 +168,7 @@
                 
                 temp = [self findPositionWithX:now AndY:i]+1;
                 
-                [first mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
-                }];
-                
-                [second mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
-                }];
-                
-                [UIView animateWithDuration:0.2 animations:^{
-                    [self layoutIfNeeded];
-                }];
-                
-                [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:NO block:^(NSTimer * _Nonnull timer) {
-                    [UIView animateWithDuration:0.1 animations:^{
-                        [first removeFromSuperview];
-                        [second removeFromSuperview];
-                        
-                        [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
-                    }];
-                }];
+                [self removeAndCreate:first andSecond:second andPos:temp];
                 
                 _score += first.num;
                 
@@ -249,27 +257,8 @@
             if(first.num == second.num){
                 
                 temp = [self findPositionWithX:now AndY:i]+1;
-                
-                [first mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
-                }];
-                
-                [second mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
-                }];
-                
-                [UIView animateWithDuration:0.2 animations:^{
-                    [self layoutIfNeeded];
-                }];
-                
-                [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:NO block:^(NSTimer * _Nonnull timer) {
-                    [UIView animateWithDuration:0.1 animations:^{
-                        [first removeFromSuperview];
-                        [second removeFromSuperview];
-                        
-                        [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
-                    }];
-                }];
+
+                [self removeAndCreate:first andSecond:second andPos:temp];
                 
                 _score += first.num;
                 _isSuccessSlide = YES;
@@ -356,26 +345,8 @@
                 
                 temp = [self findPositionWithX:i AndY:now]+1;
                 
-                [first mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
-                }];
+                [self removeAndCreate:first andSecond:second andPos:temp];
                 
-                [second mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
-                }];
-                
-                [UIView animateWithDuration:0.2 animations:^{
-                    [self layoutIfNeeded];
-                }];
-                
-                [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:NO block:^(NSTimer * _Nonnull timer) {
-                    [UIView animateWithDuration:0.1 animations:^{
-                        [first removeFromSuperview];
-                        [second removeFromSuperview];
-                        
-                        [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
-                    }];
-                }];
                 _score += first.num;
                 
                 _isSuccessSlide = YES;
@@ -462,26 +433,8 @@
                 
                 temp = [self findPositionWithX:i AndY:now]+1;
                 
-                [first mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
-                }];
+                [self removeAndCreate:first andSecond:second andPos:temp];
                 
-                [second mas_remakeConstraints:^(MASConstraintMaker *make) {
-                    make.top.bottom.left.right.equalTo([self viewWithTag:temp]);
-                }];
-                
-                [UIView animateWithDuration:0.2 animations:^{
-                    [self layoutIfNeeded];
-                }];
-                
-                [NSTimer scheduledTimerWithTimeInterval:0.1 repeats:NO block:^(NSTimer * _Nonnull timer) {
-                    [UIView animateWithDuration:0.1 animations:^{
-                        [first removeFromSuperview];
-                        [second removeFromSuperview];
-                        
-                        [self createNewNumberBlockWithpos:temp-1 andNum:first.num*2];
-                    }];
-                }];
                 _score += first.num;
                 _isSuccessSlide = YES;
                 first = second = nil;
@@ -565,6 +518,12 @@
     [UIView animateWithDuration:0.1 animations:^{
         [self createNewNumberBlockWithpos: [self findRandomEmptyPlace]];
     }];
+    
+    
+//    [UIView animateWithDuration:0.1 delay:0.2 options:UIViewAnimationOptionLayoutSubviews animations:^{
+//                [self createNewNumberBlockWithpos: [self findRandomEmptyPlace]];
+//        } completion:^(BOOL finished) {
+//        }];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -590,16 +549,114 @@
         }
     
     if(_isSuccessSlide){
-        [NSTimer scheduledTimerWithTimeInterval:0.2 repeats:NO block:^(NSTimer * _Nonnull timer) {
-            [UIView animateWithDuration:0.2 animations:^{
+//        [NSTimer scheduledTimerWithTimeInterval:0.2 repeats:NO block:^(NSTimer * _Nonnull timer) {
+//            [UIView animateWithDuration:0.2 animations:^{
+//                [self createNewNumberBlockWithpos: [self findRandomEmptyPlace]];
+//            }];
+//        }];
+            
+            
+        [UIView animateWithDuration:0.1 delay:0.2 options:UIViewAnimationOptionLayoutSubviews animations:^{
                 [self createNewNumberBlockWithpos: [self findRandomEmptyPlace]];
-            }];
+        } completion:^(BOOL finished) {
+            
         }];
+        
+        
+        
+        
     }
 
 
 }
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     _isSlide = NO;
+    _isSuccessSlide = NO;
+}
+
+
+- (BOOL)Check{
+    
+    slider *first, *second;
+    int temp;
+    
+    for(int i = 0; i < _lineBlockNum; i++){
+    
+        first = second = nil;
+    
+        for(int j = _lineBlockNum - 1; j >= 0; j--){
+        temp = [self findPositionWithX:i AndY:j];
+        
+        if(first == nil)
+            first = [self.dir objectForKey:[NSString stringWithFormat:@"%d",temp]];
+        else
+            second = [self.dir objectForKey:[NSString stringWithFormat:@"%d",temp]];
+        
+        if(first != nil && second != nil)
+        if(first.num == second.num) return YES;
+        else{
+            first = second;
+            second = nil;
+            }
+        }
+        
+        first = second = nil;
+        for(int j = _lineBlockNum - 1; j >= 0; j--){
+        temp = [self findPositionWithX:j AndY:i];
+        
+        if(first == nil)
+            first = [self.dir objectForKey:[NSString stringWithFormat:@"%d",temp]];
+        else
+            second = [self.dir objectForKey:[NSString stringWithFormat:@"%d",temp]];
+        
+        if(first != nil && second != nil)
+        if(first.num == second.num) return YES;
+        else{
+            first = second;
+            second = nil;
+            }
+        }
+        
+        first = second = nil;
+        for(int j = 0; j < _lineBlockNum; j++){
+        temp = [self findPositionWithX:i AndY:j];
+        
+        if(first == nil)
+            first = [self.dir objectForKey:[NSString stringWithFormat:@"%d",temp]];
+        else
+            second = [self.dir objectForKey:[NSString stringWithFormat:@"%d",temp]];
+        
+            
+        if(first != nil && second != nil)
+        if(first.num == second.num) return YES;
+        else{
+            first = second;
+            second = nil;
+            }
+        }
+        first = second = nil;
+        for(int j = 0; j < _lineBlockNum; j++){
+        temp = [self findPositionWithX:j AndY:i];
+        
+        if(first == nil)
+            first = [self.dir objectForKey:[NSString stringWithFormat:@"%d",temp]];
+        else
+            second = [self.dir objectForKey:[NSString stringWithFormat:@"%d",temp]];
+        
+        if(first != nil && second != nil)
+        if(first.num == second.num) return YES;
+        else{
+            first = second;
+            second = nil;
+            }
+        }
+    }
+    return NO;
+}
+
+- (BOOL)GameOver{
+    if([self findRandomEmptyPlace] != -1) return YES;
+    
+    return [self Check];
 }
 @end
