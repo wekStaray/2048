@@ -10,15 +10,15 @@
 		2B098D7924D83F0300A13B46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B098D7824D83F0300A13B46 /* AppDelegate.m */; };
 		2B098D7C24D83F0300A13B46 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B098D7B24D83F0300A13B46 /* SceneDelegate.m */; };
 		2B098D7F24D83F0300A13B46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B098D7E24D83F0300A13B46 /* ViewController.m */; };
-		2B098D8224D83F0300A13B46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B098D8024D83F0300A13B46 /* Main.storyboard */; };
 		2B098D8424D83F0300A13B46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B098D8324D83F0300A13B46 /* Assets.xcassets */; };
-		2B098D8724D83F0300A13B46 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B098D8524D83F0300A13B46 /* LaunchScreen.storyboard */; };
 		2B098D8A24D83F0300A13B46 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B098D8924D83F0300A13B46 /* main.m */; };
 		2B098D9424D83F0400A13B46 /* _0Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B098D9324D83F0400A13B46 /* _0Tests.m */; };
 		2B098D9F24D83F0400A13B46 /* _0UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B098D9E24D83F0400A13B46 /* _0UITests.m */; };
 		2B098DAE24D83F7400A13B46 /* slider.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B098DAD24D83F7400A13B46 /* slider.m */; };
 		2B098DB124D846F300A13B46 /* gameSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B098DB024D846F300A13B46 /* gameSpace.m */; };
 		2B098DF824DFA8C000A13B46 /* GameOverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2B098DF724DFA8C000A13B46 /* GameOverView.m */; };
+		2B2CDE7824E43ABD009FF7CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2CDE7624E43ABD009FF7CA /* LaunchScreen.storyboard */; };
+		2B2CDE7B24E43B07009FF7CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2B2CDE7924E43B07009FF7CA /* Main.storyboard */; };
 		870EF6EEC300EF1619191521 /* libPods-10.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 217CCA4A34AECDEB2BE7DC9C /* libPods-10.a */; };
 /* End PBXBuildFile section */
 
@@ -48,9 +48,7 @@
 		2B098D7B24D83F0300A13B46 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		2B098D7D24D83F0300A13B46 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		2B098D7E24D83F0300A13B46 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		2B098D8124D83F0300A13B46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2B098D8324D83F0300A13B46 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		2B098D8624D83F0300A13B46 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2B098D8824D83F0300A13B46 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2B098D8924D83F0300A13B46 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2B098D8F24D83F0400A13B46 /* 10Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = 10Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +63,8 @@
 		2B098DB024D846F300A13B46 /* gameSpace.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gameSpace.m; sourceTree = "<group>"; };
 		2B098DF624DFA8C000A13B46 /* GameOverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameOverView.h; sourceTree = "<group>"; };
 		2B098DF724DFA8C000A13B46 /* GameOverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameOverView.m; sourceTree = "<group>"; };
+		2B2CDE7724E43ABD009FF7CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2B2CDE7A24E43B07009FF7CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		594C6E511E0E614A26EF9C33 /* Pods-10.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-10.debug.xcconfig"; path = "Target Support Files/Pods-10/Pods-10.debug.xcconfig"; sourceTree = "<group>"; };
 		8769FD7BD4678002C293E85A /* Pods-10.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-10.release.xcconfig"; path = "Target Support Files/Pods-10/Pods-10.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,9 +149,9 @@
 				2B098DAD24D83F7400A13B46 /* slider.m */,
 				2B098DAF24D846F300A13B46 /* gameSpace.h */,
 				2B098DB024D846F300A13B46 /* gameSpace.m */,
-				2B098D8024D83F0300A13B46 /* Main.storyboard */,
+				2B2CDE7624E43ABD009FF7CA /* LaunchScreen.storyboard */,
+				2B2CDE7924E43B07009FF7CA /* Main.storyboard */,
 				2B098D8324D83F0300A13B46 /* Assets.xcassets */,
-				2B098D8524D83F0300A13B46 /* LaunchScreen.storyboard */,
 				2B098D8824D83F0300A13B46 /* Info.plist */,
 				2B098D8924D83F0300A13B46 /* main.m */,
 			);
@@ -280,9 +280,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B098D8724D83F0300A13B46 /* LaunchScreen.storyboard in Resources */,
+				2B2CDE7B24E43B07009FF7CA /* Main.storyboard in Resources */,
 				2B098D8424D83F0300A13B46 /* Assets.xcassets in Resources */,
-				2B098D8224D83F0300A13B46 /* Main.storyboard in Resources */,
+				2B2CDE7824E43ABD009FF7CA /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,20 +374,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2B098D8024D83F0300A13B46 /* Main.storyboard */ = {
+		2B2CDE7624E43ABD009FF7CA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				2B098D8124D83F0300A13B46 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		2B098D8524D83F0300A13B46 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2B098D8624D83F0300A13B46 /* Base */,
+				2B2CDE7724E43ABD009FF7CA /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		2B2CDE7924E43B07009FF7CA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2B2CDE7A24E43B07009FF7CA /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

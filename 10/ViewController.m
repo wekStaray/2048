@@ -14,7 +14,7 @@
 
 @interface ViewController ()
 @property(nonatomic,strong) gameSpace *game;
-@property(nonatomic,strong) UILabel *scoreBoard;
+@property(nonatomic,strong) UILabel *scoreBoard,*score;
 @property(nonatomic,strong) GameOverView *over;
 @end
 
@@ -30,16 +30,33 @@
     
     self.scoreBoard.text = @"0";
 }
+
+- (UILabel *)scoreBoard {
+    if(!_scoreBoard) {
+        _scoreBoard = [UILabel new];
+        [_scoreBoard setFont:[UIFont systemFontOfSize:40]];
+        _scoreBoard.text = @"0";
+    }
+    return _scoreBoard;
+}
+
 -(void)test{
-    self.scoreBoard.text = [NSString stringWithFormat: @"%d",self.game.score];
+    
 }
 -(gameSpace*)game{
     if(!_game){
         _game = [gameSpace new];
         
+        __weak UILabel *board = self.scoreBoard;
+        
+        _game.score = ^(int score){
+            int num = [board.text intValue];
+            board.text = [NSString stringWithFormat: @"%d",num + score];
+        };
+        
         [self.view addSubview:self.game];
         
-        CGFloat temp = self.view.frame.size.width-20;
+        CGFloat temp = self.view.frame.size.width - 20;
         
         [_game mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.equalTo(self.view).insets(UIEdgeInsetsMake(0, 10, 100, 10));
@@ -105,80 +122,25 @@
     
     [btn addTarget:self action:@selector(gameStart) forControlEvents:UIControlEventTouchUpInside];
     
-    UILabel *score = [UILabel new];
+    self.score = [UILabel new];
     
-    score.text = @"Score: ";
+    self.score.text = @"Score: ";
     
-    [score setFont:[UIFont systemFontOfSize:40]];
-    [self.view addSubview:score];
-    [score mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.score setFont:[UIFont systemFontOfSize:40]];
+    [self.view addSubview:self.score];
+    [self.score mas_makeConstraints:^(MASConstraintMaker *make) {
          make.left.top.equalTo(self.view).insets(UIEdgeInsetsMake(100, 10, 0, 0));
         make.width.mas_equalTo(self.view.frame.size.width/3);
         make.height.mas_equalTo(btn);
     }];
     
-    
-    self.scoreBoard = [UILabel new];
-    [self.scoreBoard setFont:[UIFont systemFontOfSize:40]];
     [self.view addSubview:self.scoreBoard];
     [self.scoreBoard mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).offset(100);
-        make.left.equalTo(score.mas_right);
+        make.left.equalTo(self.score.mas_right);
         make.width.mas_equalTo(self.view.frame.size.width/3*2);
         make.height.mas_equalTo(btn);
     }];
-    
-    
-    
-
-    // 创建定时器
-    NSTimer *timer = [NSTimer timerWithTimeInterval:0.1
-                                             target:self
-                                           selector:@selector(test)
-                                           userInfo:nil
-                                            repeats:YES
-                      ];
-
-    // 将定时器添加到runloop中，否则定时器不会启动
-    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-    // 停止定时器
-   //[timer invalidate];
-    
-    NSTimer *timer2 = [NSTimer timerWithTimeInterval:1
-                                              target:self
-                                            selector:@selector(check)
-                                            userInfo:nil
-                                             repeats:YES
-                       ];
-    
-    [[NSRunLoop mainRunLoop] addTimer:timer2 forMode:NSRunLoopCommonModes];
-    
-    
-    
-    
-    
-    
-    
-    
-//
-//    CALayer * layer = [[CALayer alloc]init];
-//
-//    layer.bounds = CGRectMake(0, 0, 200, 200);
-//    layer.cornerRadius = 100;
-//    layer.masksToBounds = YES;
-//    layer.backgroundColor = [[UIColor orangeColor]CGColor];
-//    layer.position = CGPointMake(100, 100);
-//    [self.view.layer addSublayer:layer];
-//
-//    CABasicAnimation *animate = [CABasicAnimation new];
-//    animate.keyPath = @"position.x";
-//    animate.fromValue = @(10);
-//    animate.toValue = @(200);
-//    animate.duration = 5;
-//    animate.repeatCount = INT_MAX;
-//    [layer addAnimation:animate forKey:nil];
-//
-
 }
 
 

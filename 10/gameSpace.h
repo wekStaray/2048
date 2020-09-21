@@ -14,7 +14,10 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)layout:(int)num;
 -(void)startGame;
 -(BOOL)GameOver;
-@property(nonatomic,assign) int score;
+
+typedef void (^scoreAddBlock)(int score);
+@property (nonatomic, strong) scoreAddBlock score;
+
 @end
 
 NS_ASSUME_NONNULL_END

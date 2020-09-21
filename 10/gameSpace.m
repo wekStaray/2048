@@ -11,6 +11,7 @@
 #import <Masonry/Masonry.h>
 #import <Foundation/Foundation.h>
 @interface gameSpace()
+
 @property(nonatomic,assign) int lineBlockNum;
 @property(nonatomic,assign) CGFloat blockWidth;
 @property(nonatomic,strong) NSMutableDictionary *dir;
@@ -170,7 +171,8 @@
                 
                 [self removeAndCreate:first andSecond:second andPos:temp];
                 
-                _score += first.num;
+                if(self.score)
+                    self.score(first.num);
                 
                 first = second = nil;
                 now++;
@@ -260,7 +262,9 @@
 
                 [self removeAndCreate:first andSecond:second andPos:temp];
                 
-                _score += first.num;
+                if(self.score)
+                    self.score(first.num);
+                
                 _isSuccessSlide = YES;
                 first = second = nil;
                 now--;
@@ -347,7 +351,8 @@
                 
                 [self removeAndCreate:first andSecond:second andPos:temp];
                 
-                _score += first.num;
+                if(self.score)
+                    self.score(first.num);
                 
                 _isSuccessSlide = YES;
                 first = second = nil;
@@ -435,7 +440,9 @@
                 
                 [self removeAndCreate:first andSecond:second andPos:temp];
                 
-                _score += first.num;
+                if(self.score)
+                    self.score(first.num);
+                
                 _isSuccessSlide = YES;
                 first = second = nil;
                 now++;
@@ -511,9 +518,6 @@
             
         
         [self.dir removeAllObjects];
-    
-    
-    _score = 0;
     
     [UIView animateWithDuration:0.1 animations:^{
         [self createNewNumberBlockWithpos: [self findRandomEmptyPlace]];
